@@ -1,0 +1,10 @@
+<%= @name %> = {
+    <% @options.each do |key, val| -%>
+      <%= key %> = <%= val %>,
+    <% end %>
+}
+
+sync { <%= @name %>,
+  source = "<%= @source %>",
+  target = "<%= @target %>",
+}

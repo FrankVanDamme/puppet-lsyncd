@@ -7,6 +7,7 @@ class lsyncd (
     $service_name     = $lsyncd::params::service_name,
     $rsync            = {},
     $rsyncssh         = {},
+    $level3           = {},
 ) inherits lsyncd::params {
 
   file { [$config_dir, "${config_dir}/sync.d"]:
@@ -50,7 +51,8 @@ class lsyncd (
       notify  => Service['lsyncd']
     }
   }
-  
+
   create_resources(lsyncd::sync::rsync, $rsync)
   create_resources(lsyncd::sync::rsyncssh, $rsyncssh)
+  create_resources(lsyncd::level3, $level3)
 }
