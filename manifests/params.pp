@@ -13,9 +13,12 @@ class lsyncd::params {
         'Ubuntu': {
           $config_file = "${config_dir}/lsyncd.conf.lua"
         }
-	default: {
-	  fail("Unsupported platform: ${module_name} currently doesn't support ${::osfamily} or ${::operatingsystem}")
-	}
+        'Debian': {
+          $config_file = "${config_dir}/lsyncd.conf.lua"
+        }
+        default: {
+          fail("Unsupported platform: ${module_name} currently doesn't support ${::osfamily} or ${::operatingsystem}")
+        }
       }
     }
     default: {

@@ -1,3 +1,6 @@
+# Main class
+# See README.md
+#
 class lsyncd (
     $config_dir       = $lsyncd::params::config_dir,
     $config_file      = $lsyncd::params::config_file,
