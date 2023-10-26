@@ -38,7 +38,15 @@ class lsyncd (
 
   package { $package_name:
     ensure  => 'latest',
-    require => File["${config_file}"],
+    require => File[$config_file],
+  }
+
+  # Debian uses systemd
+  if ( $facts[os][name] == 'Debian' ){
+    systemd::unit_file { 'lsyncd.service':
+        source => "puppet:///modules/${module_name}/lsyncd.service",
+        before => Service[$service_name],
+    }
   }
 
   service { $service_name:
@@ -50,8 +58,8 @@ class lsyncd (
 
   if $max_user_watches {
     sysctl::value { 'fs.inotify.max_user_watches':
-      value   => $max_user_watches,
-      notify  => Service['lsyncd']
+      value  => $max_user_watches,
+      notify => Service['lsyncd']
     }
   }
 
