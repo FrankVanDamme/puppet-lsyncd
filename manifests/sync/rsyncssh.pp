@@ -3,6 +3,8 @@ define lsyncd::sync::rsyncssh (
   $targetdir,
   $host,
   $ensure         = present,
+  $delay    = undef,
+  $delete   = undef,
   $excludes       = [],
   $rsync_options  = {},
   $ssh_options    = {},

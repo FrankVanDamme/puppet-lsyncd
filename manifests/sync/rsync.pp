@@ -2,6 +2,8 @@ define lsyncd::sync::rsync (
   $source   = undef,
   $target   = undef,
   $ensure   = present,
+  $delay    = undef,
+  $delete   = undef,
   $excludes = [],
   $options  = {},
 ) {
