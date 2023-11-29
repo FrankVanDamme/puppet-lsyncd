@@ -6,9 +6,9 @@ define lsyncd::rsync (
   $options  = {},
 ) {
   lsyncd::sync::rsync{$name:
-	  source   => $source,
-	  target   => $target,
-	  ensure   => $ensure,
-	  options  => $options,
+    ensure  => $ensure,
+    source  => $source,
+    target  => $target,
+    options => $options,
   }
 }
