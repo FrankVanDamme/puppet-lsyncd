@@ -5,12 +5,12 @@ class lsyncd::params {
   $service_name = 'lsyncd'
   $package_name = 'lsyncd'
 
-  case ${facts[os][family]} {
+  case $facts[os][family] {
     'Redhat': {
       $config_file = "/etc/lsyncd.conf"
     }
     'Debian': {
-      case ${facts[os][name]} {
+      case $facts[os][name] {
         'Ubuntu': {
           $config_file = "${config_dir}/lsyncd.conf.lua"
         }
